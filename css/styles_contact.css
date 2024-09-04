@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #0d0d1a; /* Очень тёмный фон */
+    color: #ffffff;
+    position: relative;
+}
+
+/* Верхняя полоска */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Высота полоски */
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект блюра */
+    z-index: 10; /* Чтобы полоска была поверх всего */
+    display: flex;
+    justify-content: flex-start; /* Располагаем кнопки по левому краю */
+    align-items: center; /* Вертикальное выравнивание кнопок */
+    padding: 0 1650px; /* Отступы слева и справа */
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+.boton-elegante {
+    padding: 10px 20px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    outline: none;
+    margin-left: 10px; /* Отступ слева для отодвигания кнопок друг от друга */
+    position: relative; /* Относительное позиционирование для псевдоэлементов */
+    z-index: 20; /* Чтобы кнопка была поверх контента */
+    box-shadow: none; /* Убираем тень */
+}
+
+/* Убираем отступ для первой кнопки */
+.top-bar .boton-elegante:first-child {
+    margin-left: 0;
+}
+
+.boton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+    transform: scale(1);
+}
+
+.boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+    box-shadow: none; /* Убираем тень при наведении */
+}
+
+.boton-elegante:focus {
+    outline: none; /* Убираем стандартное обведение при фокусе */
+    box-shadow: none; /* Убираем тень при фокусе */
+}
+
+/* Остальные стили остаются без изменений */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 70px; /* Увеличиваем верхний отступ */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Затемняющий слой */
+        url('/assets/background.jpg'); /* Фоновое изображение */
+    background-size: cover;
+    background-position: center;
+}
+
+.card {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25rem;
+    background-color: rgba(17, 24, 39, 1);
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.price {
+    font-size: 3.75rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #fff
+}
+
+.desc {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.625;
+    color: rgba(156, 163, 175, 1);
+}
+
+.lists {
+    margin-bottom: 1.5rem;
+    flex: 1 1 0%;
+    color: rgba(156, 163, 175, 1);
+}
+
+.lists .list {
+    margin-bottom: 0.5rem;
+    display: flex;
+    margin-left: -2.5rem;
+}
+
+.lists .list svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    color: rgba(167, 139, 250, 1);
+}
+
+.action {
+    border: none;
+    outline: none;
+    display: inline-block;
+    border-radius: 0.25rem;
+    background-color: rgba(167, 139, 250, 1);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+.action:hover {
+    background-color: rgba(129, 102, 255, 1);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    color: #cccccc;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    z-index: 10; /* Чтобы футер был поверх всего */
+}
+
+footer p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none; /* Убираем подчеркивание у всех ссылок */
+}
+
+.content {
+    max-width: 600px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-section {
+    margin-top: 20px; /* Расстояние от остальных элементов */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+    max-width: 300px; /* Ширина поля ввода */
+    margin-bottom: 10px;
+    transition: border-color 0.4s ease;
+}
+
+.input:focus {
+    border-color: #9933ff;
+    outline: none;
+}
+
+.action {
+    background-color: #6a5acd;
+    border: none;
+    padding: 10px 20px;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.action:hover {
+    background-color: #483d8b;
+}
+
+.feedback-message {
+    margin-top: 10px;
+    color: #ff4d4d;
+    font-size: 0.9rem;
+}
+
+body {
+    overflow: hidden;
+}

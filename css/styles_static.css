@@ -1,0 +1,482 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #0d0d1a; /* Очень темный фон */
+    color: #ffffff;
+    position: relative;
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Высота полоски */
+    background: rgba(0, 0, 0, 0.7); /* Полоска с полупрозрачным фоном */
+    backdrop-filter: blur(10px); /* Эффект блюра */
+    z-index: 10; /* Чтобы полоска была поверх всего */
+    display: flex;
+    justify-content: flex-end; /* Располагаем кнопки справа */
+    align-items: center; /* Вертикальное выравнивание кнопок */
+    padding: 0 20px; /* Отступы слева и справа */
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+a {
+    text-decoration: none; /* Убираем подчеркивание у всех ссылок */
+}
+
+.boton-elegante {
+    padding: 10px 20px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    outline: none;
+    margin-left: 10px; /* Отступ слева для отодвигания кнопок друг от друга */
+    position: relative; /* Относительное позиционирование для псевдоэлементов */
+    z-index: 20; /* Чтобы кнопка была поверх контента */
+    box-shadow: none; /* Убираем тень */
+}
+
+/* Убираем отступ для первой кнопки */
+.top-bar .boton-elegante:first-child {
+    margin-left: 0;
+}
+
+.boton-elegante a {
+    text-decoration: none; /* Убираем подчеркивание для ссылок внутри кнопок */
+}
+
+.boton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+    transform: scale(1);
+}
+
+.boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+    box-shadow: none; /* Убираем тень при наведении */
+}
+
+.boton-elegante:focus {
+    outline: none; /* Убираем стандартное обведение при фокусе */
+    box-shadow: none; /* Убираем тень при фокусе */
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Затемняющий слой */
+        url('/assets/background.jpg'); /* Фоновое изображение */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    padding-top: 70px; /* Увеличиваем верхний отступ, чтобы кнопка не перекрывала контент */
+}
+
+.content {
+    max-width: 50%;
+    text-align: left;
+    padding-left: 50px; /* Сдвигаем текст и кнопку правее */
+}
+
+.content h1 {
+    font-size: 3em;
+    color: #ffffff;
+    margin-bottom: 0.5em;
+}
+
+.content p {
+    font-size: 1.2em;
+    color: #cccccc;
+    margin-bottom: 1em;
+}
+
+.button {
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0px 15px;
+    background-color: #6a5acd;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+.bell {
+    width: 13px;
+}
+
+.bell path {
+    fill: rgb(0, 256, 62);
+}
+
+.arrow {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: rgb(77, 77, 77);
+    transition-duration: .2s;
+}
+
+.button:hover .arrow {
+    animation: slide-right .6s ease-out both;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.button:active {
+    transform: translate(1px , 1px);
+    transition-duration: .2s;
+}
+
+.stats {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 50px; /* Добавляем больше отступа сверху */
+    padding-left: 50px; /* Сдвигаем информацию о пользователях и т.п. */
+}
+
+.stat-item {
+    margin: 10px;
+    padding: 10px;
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 8px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.stat-number {
+    font-size: 2em;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 0.3em;
+}
+
+.stat-text {
+    font-size: 1em;
+    color: #cccccc;
+}
+
+.image-section {
+    max-width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Двигаем изображение правее */
+    padding-right: 50px;
+}
+
+/* Новый CSS для карточки и текста */
+.card {
+    width: 950px; /* Увеличенная ширина карточки */
+    height: 250px; /* Увеличенная высота карточки */
+    margin: -450px 0 0 40px; /* Сдвиг карточки вверх и влево */
+    background-color: #011522;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+}
+
+.circle {
+    padding: 0 4px;
+}
+
+.box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.yellow {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+}
+
+/* Текст рядом с кружками */
+.promocode-label {
+    margin-left: 10px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+}
+
+/* Стиль для кода внутри карточки */
+.card__content {
+    padding: 20px; /* Добавляем отступы, чтобы текст не был близко к краю */
+    color: #ffffff; /* Цвет текста изменен на белый */
+}
+
+.code-snippet {
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+    color: #ffffff; /* Цвет текста изменен на белый */
+}
+
+/* Стили для футера */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    color: #cccccc;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    z-index: 10; /* Чтобы футер был поверх всего */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Стили для меню ввода ключа */
+.key-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.key-form-container.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.form-container {
+    background-color: #1a1a60; /* Темно-синий цвет */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.input {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-weight: 500;
+    font-size: .8vw;
+    color: #fff;
+    background-color: rgb(28,28,30);
+    box-shadow: 0 0 .4vw rgba(0,0,0,0.5), 0 0 0 .15vw transparent;
+    border-radius: 0.4vw;
+    border: none;
+    outline: none;
+    padding: 0.4vw;
+    transition: .4s;
+}
+
+.input:hover {
+    box-shadow: 0 0 0 .15vw rgba(153, 51, 255, 0.186);
+}
+
+.input:focus {
+    box-shadow: 0 0 0 .15vw #9933ff;
+}
+
+.sign {
+    display: block;
+    width: 100%;
+    background-color: #6a5acd;
+    padding: 0.75rem;
+    text-align: center;
+    color: rgba(17, 24, 39, 1);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.sign:hover {
+    background-color: #483d8b;
+}
+
+/* Стили для отключённой кнопки */
+.sign:disabled {
+    background-color: #555; /* Бледно-серый цвет */
+    cursor: not-allowed; /* Запрещающий курсор */
+    color: #888;
+}
+
+/* Стили для отключённой кнопки */
+.sign:disabled {
+    background-color: #555; /* Бледно-серый цвет */
+    cursor: not-allowed; /* Запрещающий курсор */
+    color: #888;
+}
+
+/* Стили для активной кнопки */
+.sign.enabled {
+    background-color: #6a5acd;
+    cursor: pointer;
+}
+
+.sign.enabled:hover {
+    background-color: #483d8b;
+}
+
+/* Стили для крестика закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Фон меню */
+.form-container {
+  max-width: 400px;
+  background-color: #1a1a1a;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #212121;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+}
+
+.form-container .logo-container {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  max-width: 450px; /* Увеличьте max-width контейнера */
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  color: #fff;
+  background-color: #212121;
+  border: none;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: inherit;
+  margin: 12px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+}
+
+.form-container .signup-link {
+  align-self: center;
+  font-weight: 500;
+}
+
+.form-container .signup-link .link {
+  font-weight: 400;
+  color: #1778f2;
+}
+
+.form-container .signup-link .link:hover {
+  text-decoration: underline;
+}
+
+body {
+    overflow: hidden;
+}
